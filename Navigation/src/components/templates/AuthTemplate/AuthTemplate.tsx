@@ -1,6 +1,6 @@
 import React, { Children } from "react";
-import { Text } from "react-native-gesture-handler";
-import { View } from "react-native";
+import { View, Text } from "react-native";
+import styles from './AuthTemplateStyles'
 
 interface AuthTemplateProps {
     title : string;
@@ -13,10 +13,10 @@ interface AuthTemplateProps {
 
 const AuthTemplate = ({ title, subtitle, children }: AuthTemplateProps) => {
     return (          
-        <View>
-            <Text>{title}</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>{title}</Text>
             {subtitle && <Text>{subtitle}</Text>}
-            <View>
+            <View style={styles.content}>
                 {children}
             </View>
         </View>

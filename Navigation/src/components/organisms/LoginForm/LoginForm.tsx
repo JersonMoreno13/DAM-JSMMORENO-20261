@@ -1,78 +1,41 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Pressable } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import Button from "../../atoms/Button/Button";
-import { styles } from "./LoginFormStyles";
-import { AuthStackParamList } from "../../../Routes";
+import { View, Text, TouchableOpacity } from "react-native";
+import { Button, InputField } from "../../atoms";
+import styles from "./LoginFormStyles";
 
-type LoginFormNavigationProp = NativeStackNavigationProp<AuthStackParamList, 'Login'>;
+interface LoginFormProps {
+    onSubmit: () => void;
+    onSignUp: () => void;
+}
 
-const LoginForm = () => {
-    const navigation = useNavigation<LoginFormNavigationProp>();
+const LoginForm = ({ onSubmit, onSignUp }: LoginFormProps) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
-
-    const handleLogin = () => {
-        console.log('Login:', { username, password });
-    };
-
-    const handleNavigateToRegister = () => {
-        navigation.navigate('Register');
-    };
 
     return (
         <View style={styles.container}>
-            <View style={styles.inputGroup}>
-                <Text style={styles.label}>Username</Text>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="johndoe"
-                        value={username}
-                        onChangeText={setUsername}
-                        autoCapitalize="none"
-                    />
-                </View>
-            </View>
-
-            <View style={styles.inputGroup}>
-                <Text style={styles.label}>Password</Text>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="••••••••"
-                        value={password}
-                        onChangeText={setPassword}
-                        secureTextEntry={!showPassword}
-                    />
-                    <Pressable 
-                        style={styles.eyeIcon}
-                        onPress={() => setShowPassword(!showPassword)}
-                    >
-                        <Text style={styles.eyeIconText}>
-                            {showPassword ? '👁️' : '👁️‍🗨️'}
-                        </Text>
-                    </Pressable>
-                </View>
-            </View>
-
-            <Pressable style={styles.forgotPassword}>
-                <Text style={styles.forgotPasswordText}>
-                    FORGOT PASSWORD?
-                </Text>
-            </Pressable>
-
-            <View style={styles.loginButton}>
-                <Button title="LOGIN" onPress={handleLogin} />
-            </View>
-
+            <InputField
+                label="USERNAME"
+                placeholder="johndoe"
+                value={username}
+                onChangeText={setUsername}
+            />
+            <InputField
+                label="PASSWORD"
+                placeholder="Minimum 8 chars"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+            />
+            <TouchableOpacity style={styles.forgotPassword}>
+                <Text style={styles.forgotPasswordText}>FORGOT PASSWORD?</Text>
+            </TouchableOpacity>
+            <Button title="LOGIN" onSubmit={onSubmit} />
             <View style={styles.signUpContainer}>
                 <Text style={styles.signUpText}>Don't have an account? </Text>
-                <Pressable onPress={handleNavigateToRegister}>
+                <TouchableOpacity onPress={onSignUp}>
                     <Text style={styles.signUpLink}>SIGN UP</Text>
-                </Pressable>
+                </TouchableOpacity>
             </View>
         </View>
     );

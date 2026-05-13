@@ -1,67 +1,31 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
+export default StyleSheet.create({
     container: {
         width: '100%',
-    },
-    inputGroup: {
-        marginBottom: 20,
-    },
-    label: {
-        fontSize: 12,
-        fontWeight: '600',
-        color: '#000000',
-        marginBottom: 8,
-        textTransform: 'uppercase',
-        letterSpacing: 0.5,
-    },
-    inputContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        borderWidth: 1,
-        borderColor: '#CCCCCC',
-        borderRadius: 8,
-        paddingHorizontal: 12,
-        backgroundColor: '#FFFFFF',
-    },
-    input: {
-        flex: 1,
-        paddingVertical: 12,
-        fontSize: 14,
-        color: '#000000',
-    },
-    eyeIcon: {
-        padding: 8,
-    },
-    eyeIconText: {
-        fontSize: 18,
+        gap: 4,
     },
     forgotPassword: {
         alignSelf: 'flex-end',
-        marginBottom: 24,
+        marginBottom: 12,
     },
     forgotPasswordText: {
+        color: '#ef7f00',
         fontSize: 12,
-        color: '#007680',
-        fontWeight: '500',
-        textTransform: 'uppercase',
-    },
-    loginButton: {
-        marginBottom: 16,
+        fontWeight: 'bold',
     },
     signUpContainer: {
         flexDirection: 'row',
         justifyContent: 'center',
-        marginTop: 8,
+        marginTop: 16,
     },
     signUpText: {
-        fontSize: 14,
-        color: '#666666',
+        fontSize: 13,
+        color: '#333',
     },
     signUpLink: {
-        fontSize: 14,
-        color: '#007680',
-        fontWeight: '600',
-        textTransform: 'uppercase',
-    },
+        fontSize: 13,
+        color: '#ef7f00',
+        fontWeight: 'bold',
+    }
 });

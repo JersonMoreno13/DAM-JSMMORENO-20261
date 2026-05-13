@@ -1,12 +1,17 @@
 import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer } from "@react-navigation/native";
+import { Text } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { AuthStackParamList } from "./Routes";
 import { LoginPage, RegisterPage } from "./screens";
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
+
+const Login = () => {
+    return <Text>APP</Text>;
+};
 
 const App = () => {
     return (
@@ -21,15 +26,8 @@ const App = () => {
                         },
                     }}
                 >
-                    <Stack.Screen
-                        name="Login"
-                        component={LoginPage}
-                    />
-
-                    <Stack.Screen
-                        name="Register"
-                        component={RegisterPage}
-                    />
+                    <Stack.Screen name="Login" component={LoginPage}></Stack.Screen>
+                    <Stack.Screen name="Register" component={RegisterPage}></Stack.Screen>
                 </Stack.Navigator>
             </NavigationContainer>
         </SafeAreaProvider>
