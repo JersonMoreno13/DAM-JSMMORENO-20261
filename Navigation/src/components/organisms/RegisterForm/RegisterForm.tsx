@@ -6,9 +6,10 @@ import styles from './RegisterFormStyles'
 
 interface RegisterFormProps {
     onSubmit : () => void;
+    disableAction? : boolean;
 }
 
-const RegisterForm = ({onSubmit}:RegisterFormProps) => {
+const RegisterForm = ({onSubmit, disableAction}:RegisterFormProps) => {
     const [fullName, setFullName] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
