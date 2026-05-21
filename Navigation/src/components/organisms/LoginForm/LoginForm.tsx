@@ -3,8 +3,13 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { Button, InputField } from "../../atoms";
 import styles from "./LoginFormStyles";
 
+interface LoginData {
+    username: string;
+    password: string;
+}
+
 interface LoginFormProps {
-    onSubmit: () => void;
+    onSubmit: (data: LoginData) => void;
     onSignUp: () => void;
 }
 
@@ -30,7 +35,15 @@ const LoginForm = ({ onSubmit, onSignUp }: LoginFormProps) => {
             <TouchableOpacity style={styles.forgotPassword}>
                 <Text style={styles.forgotPasswordText}>FORGOT PASSWORD?</Text>
             </TouchableOpacity>
-            <Button title="LOGIN" onSubmit={onSubmit} />
+            <Button
+                title="LOGIN"
+                onSubmit={() =>
+                    onSubmit({
+                        username,
+                        password
+                    })
+                }
+            />
             <View style={styles.signUpContainer}>
                 <Text style={styles.signUpText}>Don't have an account? </Text>
                 <TouchableOpacity onPress={onSignUp}>
